@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New ProductAttributeRelation{% endblock %}
+
+{% block body %}
+    <h1>Create new ProductAttributeRelation</h1>
+
+    {{ include('product_attribute_relation/_form.html.twig') }}
+
+    <a href="{{ path('product_attribute_relation_index') }}">back to list</a>
+{% endblock %}

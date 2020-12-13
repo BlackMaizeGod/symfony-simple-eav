@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ProductAttributeRelation index{% endblock %}
+
+{% block body %}
+    <h1>ProductAttributeRelation index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Product</th>
+                <th>Attribute</th>
+                <th>Value</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for product_attribute_relation in product_attribute_relations %}
+            <tr>
+                <td>{{ product_attribute_relation.id }}</td>
+                <td>{{ product_attribute_relation.entity }}</td>
+                <td>{{ product_attribute_relation.attribute }}</td>
+                <td>{{ product_attribute_relation.value }}</td>
+                <td>
+                    <a href="{{ path('product_attribute_relation_show', {'id': product_attribute_relation.id, 'type': product_attribute_relation.attribute.type.type}) }}">show</a>
+                    <a href="{{ path('product_attribute_relation_edit', {'id': product_attribute_relation.id, 'type': product_attribute_relation.attribute.type.type}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('product_attribute_relation_new') }}">Create new</a>
+{% endblock %}

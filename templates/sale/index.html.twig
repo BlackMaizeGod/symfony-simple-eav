@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sale index{% endblock %}
+
+{% block body %}
+    <div style="width: 80%; margin: 50px auto; font-size: 22px; text-align: center;">
+        <h1>Sales</h1>
+        <table cellpadding="20px"
+               class="table"
+               style="width: 100%; margin: 50px auto; font-size: 22px; text-align: center;"
+        >
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>User Id</th>
+                <th>User</th>
+                <th>Product</th>
+                <th>Sold Price</th>
+                <th>Sold Qty</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for saleUnit in salesInfo %}
+                <tr>
+                    <td>{{ saleUnit.sale.id }}</td>
+                    <td>{{ saleUnit.user.id }}</td>
+                    <td>{{ saleUnit.user.firstName }} {{ saleUnit.user.lastName }}</td>
+                    <td>{{ saleUnit.product.sku }}</td>
+                    <td>{{ saleUnit.sale.saledPrice }}</td>
+                    <td>{{ saleUnit.sale.saledQty }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5" style="text-align: center">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
